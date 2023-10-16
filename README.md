@@ -58,6 +58,10 @@ I deployed my website via the use of Heroku. [https://dashboard.heroku.com/apps]
 ## Testing
 
 ![image](https://github.com/agunny/Price-Query/assets/133648178/ee6433d2-6016-4bb0-96ec-4860efc284ff)
+[https://extendsclass.com/python-tester.html]
+
+PEP8 linter was used to verify the code has no issues and passed.
+
 
 ### Bugs
 
@@ -65,6 +69,8 @@ One of the bugs encounted was the fact that the values for the item prices was h
 ![image](https://github.com/agunny/Price-Query/assets/133648178/18745502-74da-421f-b0f8-189d21254679)
 
 Another issue was the dates in the headings was "Price Dec 23" which wouldn't correlate with the fact that I was searching for the month and year which wouldn’t match. This, again, was solved with a simple find and replace.
+
+No other buds remaining.
 
 ## <a id="credits"></a>Credits
 
@@ -78,6 +84,9 @@ The link above was used to allow formatting of the date.
 ### Content
 The information for the LPF was provided to me by Greencore. This file is used for accounts payable and purchasing to stay in the loop as to what the prices have already been agreed to. The names of people where stripped out prevent the GDPR leaks.
 
+### Future implementations
+
+In the future, I would like to adapt this to be used by multiple sites either all feeding into the same spreadsheet or keeping them separate. This would require some upkeep as each site as their own individual price sheet as costs vary per site and items vary per site.
 
 
 
