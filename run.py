@@ -70,12 +70,7 @@ def create_rejected_invoices_report():
 
         correct_details = input("Are the details correct? (yes/no): \n")
         if correct_details.lower() != 'yes':
-            resubmit = input(
-                "Do you want to resubmit or cancel (resubmit/cancel): \n")
-            if resubmit.lower() == 'cancel':
                 break
-            else:
-                continue
 
         price, buyer, price_from_lpf = query_item_price_and_buyer(
             invoice_date, item_code, site)
