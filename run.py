@@ -18,7 +18,6 @@ approved_sheet = spreadsheet.worksheet('Approved')
 rejected_sheet = spreadsheet.worksheet('Rejected')
 
 
-# Function to find the item, return price, and buyer depending on item code and site
 def query_item_price_and_buyer(invoice_date, item_code, site):
     formatted_date = datetime.strptime(
         invoice_date, '%d/%m/%Y').strftime('%b-%y')
@@ -41,7 +40,6 @@ def query_item_price_and_buyer(invoice_date, item_code, site):
     return None, None, None
 
 
-# Function to push Rejected and Approved invoices as per the report status
 def push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf):
     status = "Approved - please pay"
     row = [invoice_date, document_reference, item_code, site,
@@ -58,7 +56,6 @@ def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_
     print("Succesfully added to the rejected log")
 
 
-# Function to create sheet with either rejected or approved price differences, 1% difference allowed
 def create_rejected_invoices_report():
     while True:
         print("\n=== Enter Invoice Details ===")
