@@ -39,7 +39,7 @@ Ease of use for all users, from maintenance by admins, users and providing usabl
 ## **Features**
 
 Data transferred into a google sheet, which can be read only to people adding and only certain people allowed to make edits. This still allows for information to be extrapolated via the use of pivot tables or simply using filters to identify which items are causing the biggest hits and why.
-Filters allow for AP to quicky relay information onto suppliers as to why the invoices where rejected.
+Filters allow for AP to quicky relay information onto suppliers as to why the invoices were rejected.
 ![image](https://github.com/agunny/Price-Query/assets/133648178/fa6d21ad-b3ae-4622-96ad-42352569ce97)
 
 
@@ -57,7 +57,7 @@ I deployed my website via the use of Heroku. [https://dashboard.heroku.com/apps]
 ## Testing
 
 ![image](https://github.com/agunny/Price-Query/assets/133648178/ee6433d2-6016-4bb0-96ec-4860efc284ff)
-[https://extendsclass.com/python-tester.html]
+<https://extendsclass.com/python-tester.html>
 
 PEP8 linter was used to verify the code has no issues and passed.
 
@@ -79,6 +79,8 @@ The link above was used to extract the date in the format that I wanted to use t
 <https://stackoverflow.com/questions/15707532/import-datetime-v-s-from-datetime-import-datetime>
 The link above was used to allow formatting of the date.
 
+<https://erikrood.com/Posts/py_gsheets.html#:~:text=Search%20for%20'Google%20Drive%20API'%2C%20enable%20it.&text=Select%20Compute%20Engine%20service%20default,it%20in%20through%20Python%20later>
+The link above was used to post items to google sheets in the manner that I laid out.
 
 ### Content
 The information for the LPF was provided to me by Greencore. This file is used for accounts payable and purchasing to stay in the loop as to what the prices have already been agreed to. The names of people where stripped out prevent GDPR leaks.
