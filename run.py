@@ -13,10 +13,10 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('LPF_FY23_MW')
+SHEET = GSPREAD_CLIENT.open('LPFMWFY23')
 
-prices = SHEET.worksheet('LPF')
+sales = SHEET.worksheet('LPF')
 
-data = sales.get_all_values(prices)
+data = sales.get_all_values()
 
 print(data)
