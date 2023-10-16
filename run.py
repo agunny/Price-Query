@@ -42,16 +42,18 @@ def query_item_price_and_buyer(invoice_date, item_code, site):
 
 def push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance):
     status = "Approved - please pay"
-    row = [invoice_date, document_reference, item_code, site, invoice_price, system_price, price_from_lpf, price_variance, buyer, status]
+    row = [invoice_date, document_reference, item_code, site, invoice_price,
+           system_price, price_from_lpf, price_variance, buyer, status]
     approved_sheet.append_rows([row])
-    print("Succesfully added to the approved log")
+    print("Succesfully added to the approved log.")
 
 
 def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance):
     status = "Rejected - please request credit from the supplier"
-    row = [invoice_date, document_reference, item_code, site, invoice_price, system_price, price_from_lpf, price_variance, buyer, status]
+    row = [invoice_date, document_reference, item_code, site, invoice_price,
+           system_price, price_from_lpf, price_variance, buyer, status]
     rejected_sheet.append_rows([row])
-    print("Succesfully added to the rejected log")
+    print("Succesfully added to the rejected log.")
 
 
 def create_rejected_invoices_report():
@@ -62,9 +64,9 @@ def create_rejected_invoices_report():
         item_code = input("Enter item code: \n").upper()
         site_input = input("Enter site: \n").upper()
         site = "MW" if site_input == "MW" else "MANTON WOOD"
-        invoice_price = input("Enter invoice price: \n")
-        system_price = input("Enter system price: \n")
-        price_variance = input("Variance to PO (£): \n")
+        invoice_price = get_valid_numbers("Enter invoice price: \n")
+        system_price = get_valid_numbers("Enter system price: \n")
+        price_variance = get_valid_numbers("Variance to PO (£): \n")
 
         correct_details = input("Are the details correct? (yes/no): \n")
         if correct_details.lower() != 'yes':
@@ -81,7 +83,8 @@ def create_rejected_invoices_report():
         print("\n=== Report Results ===")
         if price is not None:
             if abs(float(invoice_price) - float(price)) <= 0.01:
-                push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance)
+                push_to_approved_sheet(invoice_date, item_code, site, invoice_price,
+                                       system_price, document_reference, buyer, price_from_lpf, price_variance)
                 print("Invoice Approved, please pay")
                 print("Invoice Date:", invoice_date)
                 print("Document Reference:", document_reference)
@@ -94,7 +97,8 @@ def create_rejected_invoices_report():
                 print("Buyer", buyer)
 
             else:
-                push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance)
+                push_to_rejected_sheet(invoice_date, item_code, site, invoice_price,
+                                       system_price, document_reference, buyer, price_from_lpf, price_variance)
                 print("Invoice Rejected. Please request credit")
                 print("Invoice Date:", invoice_date)
                 print("Document Reference:", document_reference)
@@ -110,6 +114,15 @@ def create_rejected_invoices_report():
             "Do you want to submit another invoice? (yes/no): ")
         if continue_input.lower() != 'yes':
             break
+
+
+def get_valid_numbers(prompt):
+    while True:
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input, please enter the correct price")
 
 
 create_rejected_invoices_report()
