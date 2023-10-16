@@ -50,19 +50,41 @@ def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_
     rejected_sheet.append_rows([row])
 
 # Function to create sheet with either rejected or approved price differences, 1% difference allowed
-def create_rejected_invoices_report(invoice_date, item_code, site, invoice_price, system_price, document_reference):
+def create_rejected_invoices_report():
+    print("\n=== Enter Invoice Details ===")
+    invoice_date = input("Enter invoice date (dd/mm/yyyy: ")
+    item_code = input("Enter item code: ").upper()
+    site = input("Enter site: ").upper()
+    invoice_price = input("Enter invoice price: ")
+    system_price = input("Enter system price: ")
+    document_reference = input("Enter document reference: ")
+
     price, buyer = query_item_price_and_buyer(invoice_date, item_code, site)
+    
+    print("\n=== Report Results ===")
     if price is not None:
         if abs(float(invoice_price) - float(price)) <= 0.01:
             push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer)
+            print("Invoice Approved. Details:")
+            print("Invoice Date:", invoice_date)
+            print("Item Code:", item_code)
+            print("Site:", site)
+            print("Invoice Price", invoice_price)
+            print("System Price", system_price)
+            print("Document Reference:", document_reference)
+            print("Buyer", buyer)
+
         else:
             push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer)
+            print("Invoice Rejected. Details:")
+            print("Invoice Date:", invoice_date)
+            print("Item Code:", item_code)
+            print("Site:", site)
+            print("Invoice Price", invoice_price)
+            print("System Price", system_price)
+            print("Document Reference:", document_reference)
+            print("Buyer", buyer)
 
 # Debugging code below
-invoice_date = "15/10/2023"
-item_code = "P34309"
-site = "MANTON WOOD"
-invoice_price = "0.0543"
-system_price = "0.0571"
-document_reference = "000xxxxxx"
-create_rejected_invoices_report(invoice_date, item_code, site, invoice_price, system_price, document_reference)
+
+create_rejected_invoices_report()
