@@ -38,7 +38,6 @@ def query_item_price_and_buyer(invoice_date, item_code, site):
                 return price, buyer, price_from_lpf
     if not item_found:
         return None, None, None
-
     return None, None, None
 
 
@@ -58,24 +57,23 @@ def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_
     rejected_sheet.append_rows([row])
     print("Succesfully added to the rejected log")
 
+
 # Function to create sheet with either rejected or approved price differences, 1% difference allowed
-
-
 def create_rejected_invoices_report():
     while True:
         print("\n=== Enter Invoice Details ===")
-        invoice_date = input("Enter invoice date (dd/mm/yyyy): ")
-        document_reference = input("Enter document reference: ")
-        item_code = input("Enter item code: ").upper()
-        site_input = input("Enter site: ").upper()
+        invoice_date = input("Enter invoice date (dd/mm/yyyy): \n")
+        document_reference = input("Enter document reference: \n")
+        item_code = input("Enter item code: \n").upper()
+        site_input = input("Enter site: \n").upper()
         site = "MW" if site_input == "MW" else "MANTON WOOD"
-        invoice_price = input("Enter invoice price: ")
-        system_price = input("Enter system price: ")
+        invoice_price = input("Enter invoice price: \n")
+        system_price = input("Enter system price: \n")
 
-        correct_details = input("Are the details correct? (yes/no): ")
+        correct_details = input("Are the details correct? (yes/no): \n")
         if correct_details.lower() != 'yes':
             resubmit = input(
-                "Do you want to resubmit or cancel (resubmit/cancel): ")
+                "Do you want to resubmit or cancel (resubmit/cancel): \n")
             if resubmit.lower() == 'cancel':
                 break
             else:
@@ -116,8 +114,6 @@ def create_rejected_invoices_report():
             "Do you want to submit another invoice? (yes/no): ")
         if continue_input.lower() != 'yes':
             break
-
-# Debugging code below
 
 
 create_rejected_invoices_report()
