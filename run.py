@@ -22,7 +22,7 @@ approved_sheet = spreadsheet.worksheet('Approved')
 rejected_sheet = spreadsheet.worksheet('Rejected')
 
 
-
+# Function to find the item and return price depending on item code and date of the invoice
 def query_item_price(invoice_date, item_code, site):
     formatted_date = datetime.strptime(invoice_date, '%d/%m/%Y').strftime('%b-%y')
     data = lpf_sheet.get_all_records()
@@ -38,8 +38,24 @@ def query_item_price(invoice_date, item_code, site):
         return "Item not found in LPF file, please check the PO/Invoice for the item code again"
     return "Error in LPF sheet"
 
-invoice_date = "15/11/2023"
+# Function to create sheet with either rejected or approved price differences
+
+def create_rejected_invoices_report(invoice_date, item_code, site, invoice_price):
+    approved_price = query_item_price(invoice_date, item_code, site)
+    if approved_price:
+        if abs(float(invoice_price) - float(approved_price)) <=0.01:
+            return "Approved"
+        else:
+            return "Rejected"
+
+
+
+
+
+# Debugging code below
+invoice_date = "15/10/2023"
 item_code = "P34309"
 site = "MANTON WOOD"
-price = query_item_price(invoice_date, item_code, site)
-print(f"Price for Item Code {item_code} on {invoice_date}: {price}")
+invoice_price = "0.0543"
+report_status = create_rejected_invoices_report(invoice_date, item_code, site, invoice_price)
+print(f"Report Status: {report_status}")
