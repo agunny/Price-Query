@@ -40,18 +40,16 @@ def query_item_price_and_buyer(invoice_date, item_code, site):
     return None, None, None
 
 
-def push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf):
+def push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance):
     status = "Approved - please pay"
-    row = [invoice_date, document_reference, item_code, site,
-           invoice_price, system_price, price_from_lpf, buyer, status]
+    row = [invoice_date, document_reference, item_code, site, invoice_price, system_price, price_from_lpf, price_variance, buyer, status]
     approved_sheet.append_rows([row])
     print("Succesfully added to the approved log")
 
 
-def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf):
+def push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance):
     status = "Rejected - please request credit from the supplier"
-    row = [invoice_date, document_reference, item_code, site,
-           invoice_price, system_price, price_from_lpf, buyer, status]
+    row = [invoice_date, document_reference, item_code, site, invoice_price, system_price, price_from_lpf, price_variance, buyer, status]
     rejected_sheet.append_rows([row])
     print("Succesfully added to the rejected log")
 
@@ -66,6 +64,7 @@ def create_rejected_invoices_report():
         site = "MW" if site_input == "MW" else "MANTON WOOD"
         invoice_price = input("Enter invoice price: \n")
         system_price = input("Enter system price: \n")
+        price_variance = input("Variance to PO (£): \n")
 
         correct_details = input("Are the details correct? (yes/no): \n")
         if correct_details.lower() != 'yes':
@@ -82,29 +81,29 @@ def create_rejected_invoices_report():
         print("\n=== Report Results ===")
         if price is not None:
             if abs(float(invoice_price) - float(price)) <= 0.01:
-                push_to_approved_sheet(invoice_date, item_code, site, invoice_price,
-                                       system_price, document_reference, buyer, price_from_lpf)
+                push_to_approved_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance)
                 print("Invoice Approved, please pay")
                 print("Invoice Date:", invoice_date)
+                print("Document Reference:", document_reference)
                 print("Item Code:", item_code)
                 print("Site:", site)
                 print("Invoice Price", invoice_price)
                 print("System Price", system_price)
                 print("Price from LPF:", price_from_lpf)
-                print("Document Reference:", document_reference)
+                print("Variance to PO (£):", price_variance)
                 print("Buyer", buyer)
 
             else:
-                push_to_rejected_sheet(invoice_date, item_code, site, invoice_price,
-                                       system_price, document_reference, buyer, price_from_lpf)
+                push_to_rejected_sheet(invoice_date, item_code, site, invoice_price, system_price, document_reference, buyer, price_from_lpf, price_variance)
                 print("Invoice Rejected. Please request credit")
                 print("Invoice Date:", invoice_date)
+                print("Document Reference:", document_reference)
                 print("Item Code:", item_code)
                 print("Site:", site)
                 print("Invoice Price", invoice_price)
                 print("System Price", system_price)
                 print("Price from LPF:", price_from_lpf)
-                print("Document Reference:", document_reference)
+                print("Variance to PO (£):", price_variance)
                 print("Buyer", buyer)
 
         continue_input = input(
