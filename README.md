@@ -19,6 +19,16 @@ This project is designed to streamline the process of which invoices logged by p
 
 Also having worked in accounts payable and managing the current price portal gave me a great understanding as to how the process is supposed to work, therefore I knew already what was needed and how it’s going to be used by others.
 
+### How it works
+
+![image](https://github.com/agunny/Price-Query/assets/133648178/20bb4fa0-6fd7-4549-9341-0fbbf7e51175)
+
+Once the inputs are completed, the invoices are either then either approved based on the date the invoice was raised which is very important when back dating invoices that are 2+ months old. The users are then given the option to carry on adding invoices or to just add the one. Once added the invoices are either approved or rejected by the system and automatically logged for as either approved or rejected. The appropriate steps can then be immediately followed up.
+
+Output:
+![image](https://github.com/agunny/Price-Query/assets/133648178/7241ca68-4cf3-4443-8b0a-3add61390812)
+
+
 ![image](https://github.com/agunny/Price-Query/assets/133648178/99c644cd-e696-40e8-ada7-79587d037442)
 Current method of getting approvals.
 
