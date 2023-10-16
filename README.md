@@ -1,32 +1,26 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Price file error approval and logging
 
-Welcome,
+This python project was inspired by the current way of which invoices are approved for payment when there is a payment discrepancy between the purchase order raised on the system and the price on the latest price file which has been agreed upon by buyers and suppliers. 
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+## <a id="background"></a>Background
 
-## Reminders
+This project is designed to streamline the process of which invoices logged by purchase ledger clerks/account payable clerks (AP) and the buyers in purchasing. The current method requires AP to set aside the invoices that are due for query and log them to a portal in which purchasing are to review and approve. However, if the buyers are away or miss the approval which is set via email, then the payment process is delayed, possibly resulting in legal action and a soured relationship. These price file errors can arise through many avenues. A delay in the in update of prices, or if prices of the items update overnight, from when the PO is raised vs when the invoice is raised. Logging them in a google spreadsheet allows the purchasing to track the items which are currently being flagged and, via the use of in house generated price and quantity error reports, track the impact of the difference in items.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+![image](https://github.com/agunny/Price-Query/assets/133648178/99c644cd-e696-40e8-ada7-79587d037442)
+Current method of getting approvals.
 
-## Creating the Heroku app
+## <a id="goals"></a>Goals
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Streamline process
 
-1. `heroku/python`
-2. `heroku/nodejs`
+To streamline the process that for accounts payable getting approvals/rejections to pay invoices.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+### Easy monitoring and evidence
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The back up of the spreadsheet to be clear as to why it was approved/rejected for audit and supplier purposes.
 
-Connect your GitHub repository and deploy as normal.
+### Easy of use for all users
 
-## Constraints
+Ease of use for all users, from maintenance by admins, users and providing usable information to all parties
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+## **Features**
