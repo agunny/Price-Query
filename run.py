@@ -15,8 +15,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('LPF_FY23_MW')
 
-sales = SHEET.worksheet('LPF')
+prices = SHEET.worksheet('LPF')
 
-data = sales.get_all_values()
+data = sales.get_all_values(prices)
 
 print(data)
