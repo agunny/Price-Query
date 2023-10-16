@@ -63,7 +63,7 @@ def create_rejected_invoices_report(invoice_date, item_code, site, invoice_price
 invoice_date = "15/10/2023"
 item_code = "P34309"
 site = "MANTON WOOD"
-invoice_price = "0.0571"
+invoice_price = "0.2"
 system_price = "0.0571"
 document_reference = "000xxxxxx"
 create_rejected_invoices_report(invoice_date, item_code, site, invoice_price, system_price, document_reference)
