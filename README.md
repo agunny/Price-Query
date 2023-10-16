@@ -2,6 +2,7 @@
 
 This python project was inspired by the current way of which invoices are approved for payment when there is a payment discrepancy between the purchase order raised on the system and the price on the latest price file which has been agreed upon by buyers and suppliers. 
 
+![image](https://github.com/agunny/Price-Query/assets/133648178/ebe8f21b-c0ea-48c2-9a56-16ace652fdb3)
 
 ## Contents
 
@@ -10,8 +11,6 @@ This python project was inspired by the current way of which invoices are approv
 * [Features](#features)
 * [Technologies Used](#tech)
 * [Credits](#Credits)
-
-
 
 
 ## <a id="background"></a>Background
@@ -82,11 +81,11 @@ The link above was used to allow formatting of the date.
 
 
 ### Content
-The information for the LPF was provided to me by Greencore. This file is used for accounts payable and purchasing to stay in the loop as to what the prices have already been agreed to. The names of people where stripped out prevent the GDPR leaks.
+The information for the LPF was provided to me by Greencore. This file is used for accounts payable and purchasing to stay in the loop as to what the prices have already been agreed to. The names of people where stripped out prevent GDPR leaks.
 
 ### Future implementations
 
-In the future, I would like to adapt this to be used by multiple sites either all feeding into the same spreadsheet or keeping them separate. This would require some upkeep as each site as their own individual price sheet as costs vary per site and items vary per site.
+In the future, I would like to adapt this to be used by multiple sites either all feeding into the same spreadsheet or keeping them separate. This would require some upkeep as each site as their own individual price sheet as costs vary per site and items vary per site. Also seasonal changes meaning more or less items could be added in one month depending on the materials required by customers.
 
 
 
